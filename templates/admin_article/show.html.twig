@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article{% endblock %}
+
+{% block body %}
+    <h1>Article</h1>
+
+    <table class="table">
+        <tbody>
+          
+            <tr>
+                <th>Titre</th>
+                <td>{{ article.titre }}</td>
+            </tr>
+            <tr>
+                <th>Categorie</th>
+                <td>{{ article.categorie }}</td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>{{ article.contenu }}</td>
+            </tr>
+        
+          
+            <tr>
+                <th>Auteur</th>
+                <td>{{ article.user.name }}</td>
+            </tr>
+            <tr>
+                <th>Commentaires</th>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_article_index') }}">back to list</a>
+
+    <a href="{{ path('app_admin_article_edit', {'id': article.id}) }}">scdit</a>
+
+    {{ include('admin_article/_delete_form.html.twig') }}
+{% endblock %}
