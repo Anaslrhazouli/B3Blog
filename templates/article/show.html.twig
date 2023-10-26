@@ -22,6 +22,31 @@
           
         </tbody>
     </table>
+    
+    <a href="{{ path('app_article_index') }}">rtr</a>
 
+    <div><a href="{{ path('app_commentaire_new', {'id': article.id}) }}">Ajouter un commentaire</a></div>
 
+    <div>
+        <p>Les commentaires de ce article : </p>
+    
+    <table class="table">
+        <tbody>
+        {% for commentaire in commentaires %}
+            <tr>
+                <td>{{ commentaire.createdAt|date('Y-m-d H:i:s') }}</td>
+                <td>{{ commentaire.user.name }} a dit :</td>
+                <td>{{ commentaire.contenu }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no commets found</td>
+            </tr>
+        {% endfor %}
+
+    </div>
+
+    <div>
+
+    </div>
 {% endblock %}
