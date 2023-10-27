@@ -7,24 +7,24 @@
 <body>
     
 <div class="container mx-auto px-4  rounded-md">
-<h1 class="text-5xl font-bold mb-4 mt-5">Articles</h1>
-
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-    {% for article in articles %}
-    <div class="p-6 rounded-lg shadow-md bg-gray-100 flex flex-col">
-        <div class="flex-1 mb-2">
-            <span class="font-bold text-xl transform capitalize">{{ article.titre }}</span>
+    <h1 class="text-3xl font-bold mb-4 mt-5">Articles</h1>
+        
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {% for article in articles %}
+        <div class="p-6 rounded-lg shadow-md bg-gray-100 flex flex-col">
+            <div class="flex-1 mb-2">
+                <span class="font-bold text-lg transform capitalize">{{ article.titre }}</span>
+            </div>
+            <div class="flex-1 text-sm mb-2">
+                <span class="font-medium">{{ article.contenu|two_lines }}</span> 
+            </div>
+            <div class="flex-1 mt-4">
+                <a href="{{ path('app_article_show', {'id': article.id}) }}" class="bg-green-500 inline-block rounded-full px-6 py-2 text-md font-semibold mr-2 mb-2 duration-300 ease-in-out hover:bg-green-300">Voir plus</a>
+            </div>
         </div>
-        <div class="flex-1 mb-2">
-            <span class="font-medium">{{ article.contenu|two_lines }}</span> 
-        </div>
-        <div class="flex-1 mt-4">
-            <a href="{{ path('app_article_show', {'id': article.id}) }}" class="text-white px-3 py-1 rounded-lg hover:bg-green-300 hover:text-black duration-300 bg-green-700">Show</a>
-        </div>
-    </div>
-    {% else %}
-        <div class="text-center">No records found</div>
-    {% endfor %}
+        {% else %}
+            <div class="text-center">Pas d'article</div>
+        {% endfor %}
 
    
 
