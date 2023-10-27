@@ -3,33 +3,41 @@
 {% block title %}Categorie index{% endblock %}
 
 {% block body %}
-    <h1>Categorie index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for categorie in categories %}
-            <tr>
-                <td>{{ categorie.id }}</td>
-                <td>{{ categorie.nom }}</td>
-                <td>
-                    <a href="{{ path('app_admin_categorie_show', {'id': categorie.id}) }}">show</a>
-                    <a href="{{ path('app_admin_categorie_edit', {'id': categorie.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+<div class="container mx-auto px-4  rounded-md">
 
-    <a href="{{ path('app_admin_categorie_new') }}">Create new</a>
+    <h1 class="text-2xl font-bold py-4">Toutes les Categories</h1>
+
+    <div class="overflow-x-auto">
+        <table class="min-w-full table-auto">
+            <thead>
+                <tr class="bg-blue-500 text-left text-white">
+                    <th class="px-4 py-2">Id</th>
+                    <th class="px-4 py-2">Nom</th>
+                    <th class="px-4 py-2">Actions</th>
+                </tr>
+            </thead>
+            <tbo    dy>
+            {% for categorie in categories %}
+                <tr class="{{ loop.index is even ? 'bg-gray-100' : 'bg-white' }}">
+                    <td class="px-4 py-2">{{ categorie.id }}</td>
+                    <td class="px-4 py-2">{{ categorie.nom }}</td>
+                    <td class="px-4 py-2">
+                         <a href="{{  path('app_admin_categorie_edit', {'id': categorie.id}) }}" class="bg-yellow-500 mt-2 py-0 font-semibold px-3 rounded-full hover:bg-yellow-300 duration-300">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr class="bg-gray-100">
+                    <td colspan="4" class="px-4 py-2">No records found</td>
+                </tr>
+            {% endfor %}
+            </tbo>
+        </table>
+    </div>
+    
+    <a href="{{ path('app_admin_categorie_new') }}" class="mt-4 bg-blue-500 rounded-full hover:bg-blue-700 text-white font-bold py-2 px-4 ">Create new</a>
+    
+
+</div>
+
 {% endblock %}

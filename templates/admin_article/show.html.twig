@@ -3,39 +3,36 @@
 {% block title %}Article{% endblock %}
 
 {% block body %}
-    <h1>Article</h1>
 
-    <table class="table">
-        <tbody>
-          
-            <tr>
-                <th>Titre</th>
-                <td>{{ article.titre }}</td>
-            </tr>
-            <tr>
-                <th>Categorie</th>
-                <td>{{ article.categorie }}</td>
-            </tr>
-            <tr>
-                <th></th>
-                <td>{{ article.contenu }}</td>
-            </tr>
-        
-          
-            <tr>
-                <th>Auteur</th>
-                <td>{{ article.user.name }}</td>
-            </tr>
-            <tr>
-                <th>Commentaires</th>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_admin_article_index') }}">back to list</a>
-
-    <a href="{{ path('app_admin_article_edit', {'id': article.id}) }}">scdit</a>
-
-    {{ include('admin_article/_delete_form.html.twig') }}
+<div class="container mx-auto p-4  rounded-md">
+    <div class="max-w-xl mx-auto p-4">
+        <h1 class="text-2xl font-bold mb-4 text-blue-500">Article</h1>
+    
+        <table class="table bg-blue-100 text-black text-left rounded-lg">
+            <tbody >
+                <tr>
+                    <th class="font-semibold  p-4">Titre</th>
+                    <td>{{ article.titre }}</td>
+                </tr>
+                <tr>
+                    <th class="font-semibold p-4">Categorie</th>
+                    <td>{{ article.categorie }}</td>
+                </tr>
+                <tr>
+                    <th class="font-semibold p-4"></th>
+                    <td>{{ article.contenu }}</td>
+                </tr>
+                <tr>
+                    <th class="font-semibold p-4">Auteur</th>
+                    <td>{{ article.user.name }}</td>
+                </tr>
+            </tbody>
+        </table>
+    
+        <a href="{{ path('app_admin_article_index') }}" class="mt-4 bg-green-500  py-0 px-3 text-white rounded-full hover:text-green-700">Retour</a>
+        <a href="{{ path('app_admin_article_edit', {'id': article.id}) }}" class="mt-2 py-0 px-3 text-white rounded-full bg-yellow-500 hover:text-yellow-700">Edit</a>
+        <a href="{{ path('app_admin_article_delete', {'id': article.id}) }}" class="mt-2 py-0 px-3 text-white rounded-full bg-red-500 hover:text-red-700">Delete</a>
+    </div>
+    
+</div>
 {% endblock %}

@@ -3,35 +3,43 @@
 {% block title %}Article index{% endblock %}
 
 {% block body %}
-    <h1>Article index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Titre</th>
-                <th>Contenu</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for article in articles %}
-            <tr>
-                <td>{{ article.id }}</td>
-                <td>{{ article.titre }}</td>
-                <td>{{ article.contenu }}</td>
-                <td>
-                    <a href="{{ path('app_admin_article_show', {'id': article.id}) }}">show</a>
-                    <a href="{{ path('app_admin_article_edit', {'id': article.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+<div class="container mx-auto px-4  rounded-md">
 
-    <a href="{{ path('app_admin_article_new') }}">Create new</a>
+    <h1 class="text-2xl font-bold py-4">Tous les Articles</h1>
+
+    <div class="overflow-x-auto">
+        <table class="min-w-full table-auto">
+            <thead>
+                <tr class="bg-blue-500 text-white">
+                    <th class="px-4 py-2">Id</th>
+                    <th class="px-4 py-2">Titre</th>
+                    <th class="px-4 py-2">Contenu</th>
+                    <th class="px-4 py-2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for article in articles %}
+                <tr class="{{ loop.index is even ? 'bg-gray-100' : 'bg-white' }}">
+                    <td class="px-4 py-2">{{ article.id }}</td>
+                    <td class="px-4 py-2">{{ article.titre }}</td>
+                    <td class="px-4 py-2">{{ article.contenu|two_lines  }}</td>
+                    <td class="px-4 py-2">
+                        <a href="{{ path('app_admin_article_show', {'id': article.id}) }}" class="bg-green-500 mt-2 py-0 font-semibold px-3 rounded-full hover:bg-green-300 duration-300">Voir</a>
+                        <a href="{{ path('app_admin_article_edit', {'id': article.id}) }}" class="bg-yellow-500 mt-2 py-0 font-semibold px-3 rounded-full hover:bg-yellow-300 duration-300">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr class="bg-gray-100">
+                    <td colspan="4" class="px-4 py-2">No records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    <a href="{{ path('app_admin_article_new') }}" class="mt-4 bg-blue-500 rounded-full hover:bg-blue-700 text-white font-bold py-2 px-4 ">Create new</a>
+    
+
+</div>
 {% endblock %}

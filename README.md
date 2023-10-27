@@ -1,7 +1,6 @@
 # B3Blog
 
-Need to find a solution of normal user / categ - article
-
-need to add commentairs in article show page
-
-need style
+Please to access to the admin page use the link : 
+/admin/article/ pour les gerer les articles
+/admin/categorie/ pour les gerer les categories
+/admin/user/ pour les gerer les utilisateurs

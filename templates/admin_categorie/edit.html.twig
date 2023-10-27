@@ -7,7 +7,7 @@
 
     {{ include('admin_categorie/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_admin_categorie_index') }}">back to list</a>
+    <a href="{{ path('app_admin_categorie_index') }}"class="bg-green-500 py-0 mb-2 font-semibold px-3 rounded-full hover:bg-green-300 duration-300">Retour</a>
 
     {{ include('admin_categorie/_delete_form.html.twig') }}
 {% endblock %}
