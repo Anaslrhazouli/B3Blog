@@ -18,11 +18,11 @@
                     <span class="font-medium">{{ article.contenu|two_lines }}</span> 
                 </div>
                 <div class="flex-1 mt-4">
-                    <a href="{{ path('app_article_show', {'id': article.id}) }}" class="text-white px-3 py-1 rounded-lg hover:bg-green-300 hover:text-black duration-300 bg-green-700">Show</a>
+                    <a href="{{ path('app_article_show', {'id': article.id}) }}" class="bg-green-500 inline-block rounded-full px-6 py-2 text-md font-semibold mr-2 mb-2 duration-300 ease-in-out hover:bg-green-300">Voir plus</a>
                 </div>
             </div>
             {% else %}
-                <div class="text-center">No records found</div>
+                <div class="text-center">Pas d'article</div>
             {% endfor %}
         
            

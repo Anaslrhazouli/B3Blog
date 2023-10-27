@@ -3,8 +3,15 @@
 {% block title %}New Commentaire{% endblock %}
 
 {% block body %}
-    <h1>Create new Commentaire</h1>
+   
 
+    <div class="container mx-auto px-4  rounded-md">
+        <h1 class="text-2xl font-bold mb-4">Créer un nouveau commentaire</h1>
+        
     {{ include('commentaire/_form.html.twig') }}
-
+        
+            <a class="text-white text-center font-bold text-xl px-6 py-2 rounded-full hover:bg-blue-300 hover:text-black duration-300 bg-blue-700 inline-block mt-6"  href="{{ path('app_article_index') }}">Retour</a>
+           
+        
+        </div>
 {% endblock %}

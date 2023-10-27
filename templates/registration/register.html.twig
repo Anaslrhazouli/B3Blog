@@ -3,18 +3,35 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
 
-    {{ form_errors(registrationForm) }}
+<div class="container mx-auto p-4 rounded-md shadow-md m-4">
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.name) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+    <div class="max-w-md mx-auto mt-8 p-4">
+        <h1 class="text-2xl font-bold mb-4">Register</h1>
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+        {{ form_errors(registrationForm) }}
+
+        {{ form_start(registrationForm) }}
+        <div class="mb-4">
+            {{ form_row(registrationForm.email, {'attr': {'class': 'w-full p-2 border rounded'}}) }}
+        </div>
+        <div class="mb-4">
+            {{ form_row(registrationForm.name, {'attr': {'class': 'w-full p-2 border rounded'}}) }}
+        </div>
+        <div class="mb-4">
+            {{ form_row(registrationForm.plainPassword, {
+                'label': 'Password',
+                'attr': {'class': 'w-full p-2 border rounded'},
+            }) }}
+        </div>
+        <div class="mb-4">
+            {{ form_row(registrationForm.agreeTerms,{'attr': {'class': 'm-2'}}) }}
+        </div>
+
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Register</button>
+        {{ form_end(registrationForm) }}
+    </div>
+
+</div>
+  
 {% endblock %}

@@ -1,4 +1,16 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+
+
+{{ form_start(form, {'attr': {'class': 'mt-4'}}) }}
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="w-full">
+            <h4 class="text-xl font-semibold mb-4">Contenu</h4>
+            {{ form_widget(form.contenu, {'attr': {'class': 'p-2 border h-48 rounded w-full'}}) }}
+        </div>
+        
+    </div>
+</div>
+    <button class="text-white text-center font-bold text-xl px-6   
+    py-2 rounded-full hover:bg-blue-300 hover:text-black duration-300 bg-blue-700 inline-block mt-6">{{ button_label|default('Enregister')}}</button>
 {{ form_end(form) }}
