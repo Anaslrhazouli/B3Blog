@@ -7,6 +7,7 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
 }
 
 Encore
+.enablePostCssLoader()
     // directory where compiled assets will be stored
     .setOutputPath('public/build/')
     // public path used by the web server to access the output path
@@ -53,7 +54,6 @@ Encore
         config.corejs = '3.23';
     })
 
-    .enablePostCssLoader()
 
     // enables Sass/SCSS support
     //.enableSassLoader()

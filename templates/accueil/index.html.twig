@@ -1,43 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AccueilController!{% endblock %}
+{% block title %}Accueil!{% endblock %}
 
 {% block body %}
-<h1 class="text-3xl font-bold underline">
-    Bonjour
-  </h1>
-{% if app.user %}
-    <p class="text-3xl font-bold">Welcome, {{ app.user.name }}!</p>
-    <a href="/logout">Logout</a>
-{% else %}
-    <p class="text-2xl font-semibold">Please log in.</p>
-    <a class="bg-blue-500 hover:bg-blue-600 text-white font-semibold m-1 py-2 px-4 rounded-lg" href="/login">Login</a>
-    <a class="bg-blue-500 hover:bg-blue-600 text-white font-semibold m-1 py-2 px-4 rounded-lg" href="/register">Register</a>
+<body>
+    
+<div class="container mx-auto px-4  rounded-md">
+<h1 class="text-5xl font-bold mb-4 mt-5">Articles</h1>
 
-{% endif %}
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Titre</th>
-            <th>Contenu</th>
-            <th>actions</th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
     {% for article in articles %}
-        <tr>
-            <td>{{ article.titre }}</td>
-            <td>{{ article.contenu }}</td>
-            <td>
-                <a class="underline" href="{{ path('app_article_show', {'id': article.id}) }}">Voir plus</a>
-            </td>
-        </tr>
+    <div class="p-6 rounded-lg shadow-md bg-gray-100 flex flex-col">
+        <div class="flex-1 mb-2">
+            <span class="font-bold text-xl transform capitalize">{{ article.titre }}</span>
+        </div>
+        <div class="flex-1 mb-2">
+            <span class="font-medium">{{ article.contenu|two_lines }}</span> 
+        </div>
+        <div class="flex-1 mt-4">
+            <a href="{{ path('app_article_show', {'id': article.id}) }}" class="text-white px-3 py-1 rounded-lg hover:bg-green-300 hover:text-black duration-300 bg-green-700">Show</a>
+        </div>
+    </div>
     {% else %}
-        <tr>
-            <td colspan="5">no records found</td>
-        </tr>
+        <div class="text-center">No records found</div>
     {% endfor %}
-    </tbody>
-</table>
+
+   
+
+</div>
+<a href="{{ path('app_article_new') }}" class="text-white text-center font-bold text-xl px-6     py-2 rounded-full hover:bg-blue-300 hover:text-black duration-300 bg-blue-700 inline-block mt-6">Ajouter un article</a>
+</div>
+
+</body>
 {% endblock %}

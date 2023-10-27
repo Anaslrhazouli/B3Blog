@@ -3,50 +3,35 @@
 {% block title %}Article{% endblock %}
 
 {% block body %}
-    <h1>Article</h1>
+<div class="container mx-auto px-4 rounded-md">
+    <h1 class="font-serif text-4xl font-bold mt-6 mb-6">{{ article.titre }}</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ article.id }}</td>
-            </tr>
-            <tr>
-                <th>Titre</th>
-                <td>{{ article.titre }}</td>
-            </tr>
-            <tr>
-                <th>Contenu</th>
-                <td>{{ article.contenu }}</td>
-            </tr>
-          
-        </tbody>
-    </table>
-    
-    <a href="{{ path('app_article_index') }}">rtr</a>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8">
+        <div class="bg-gray-100 p-4 rounded-lg shadow-md">
+            <h2 class="text-sm font-bold mt-4">Contenu :</h2>
+            <p class="text-lg font-medium mt-4 mb-2">{{ article.contenu }}</p>
+        </div>
 
-    <div><a href="{{ path('app_commentaire_new', {'id': article.id}) }}">Ajouter un commentaire</a></div>
+        <div class="bg-gray-100 p-4 rounded-lg shadow-md">
 
-    <div>
-        <p>Les commentaires de ce article : </p>
-    
-    <table class="table">
-        <tbody>
-        {% for commentaire in commentaires %}
-            <tr>
-                <td>{{ commentaire.createdAt|date('Y-m-d H:i:s') }}</td>
-                <td>{{ commentaire.user.name }} a dit :</td>
-                <td>{{ commentaire.contenu }}</td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no commets found</td>
-            </tr>
-        {% endfor %}
+            {% for commentaire in commentaires %}
+                <div class=" bg-violet-200 m-4 rounded-lg p-4">
+                    <p class="text-sm text-gray-500">{{ commentaire.createdAt|date('Y-m-d H:i:s') }}</p>
+                    <p class="font-semibold">{{ commentaire.user.name }} a dit :</p>
+                    <p>{{ commentaire.contenu }}</p>
+                </div>
+            {% endfor %}
 
+            <div>
+                <a class="text-white text-center font-bold text-xl px-6 py-2 rounded-full hover:bg-blue-300 hover:text-black duration-300 bg-blue-700 inline-block mt-6" href="{{ path('app_commentaire_new', {'id': article.id}) }}">Ajouter un commentaire</a>
+            </div>
+        </div>
+
+       
     </div>
 
     <div>
-
+        <a class="text-white text-center font-bold text-xl px-6 py-2 rounded-full hover:bg-blue-300 hover:text-black duration-300 bg-blue-700 inline-block mt-6"  href="{{ path('app_article_index') }}">Retour</a>
     </div>
+</div>
 {% endblock %}
