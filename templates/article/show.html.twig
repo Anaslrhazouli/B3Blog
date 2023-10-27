@@ -23,7 +23,11 @@
             {% endfor %}
 
             <div>
-                <a class="text-white text-center font-bold text-xl px-6 py-2 rounded-full hover:bg-blue-300 hover:text-black duration-300 bg-blue-700 inline-block mt-6" href="{{ path('app_commentaire_new', {'id': article.id}) }}">Ajouter un commentaire</a>
+               {% if app.user %}
+<a href="{{  path('app_commentaire_new', {'id': article.id})  }}" class="text-white text-center font-bold text-xl px-6   
+py-2 rounded-full hover:bg-blue-300 hover:text-black duration-300 bg-blue-700 inline-block mt-6">Ajouter un commentaire</a>
+
+{% endif %}
             </div>
         </div>
 

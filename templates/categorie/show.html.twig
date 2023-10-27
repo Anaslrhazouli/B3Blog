@@ -32,11 +32,16 @@
                 <div class="text-center">No records found</div>
             {% endfor %}
         </div>
-       
-     <a href="{{ path('app_article_new') }}" class="text-white text-center font-bold text-xl px-6     py-2 rounded-full hover:bg-blue-300 hover:text-black duration-300 bg-blue-700 inline-block mt-6">Ajouter un article</a>
-   
+        {% if app.user %}
+        <a href="{{ path('app_article_new') }}" class="text-white text-center font-bold text-xl px-6   
+        py-2 rounded-full hover:bg-blue-300 hover:text-black duration-300 bg-blue-700 inline-block mt-6">Ajouter un article</a>
+    
+        {% endif %}
+        
+    
      <div>
-        <a class="text-white text-center font-bold text-xl px-6 py-2 rounded-full hover:bg-blue-300 hover:text-black duration-300 bg-blue-700 inline-block mt-6"  href="{{ path('app_categorie_index') }}"">Retour</a>
+        <a class="text-white text-center font-bold text-xl px-6 py-2 rounded-full hover:bg-blue-300
+         hover:text-black duration-300 bg-blue-700 inline-block mt-6"  href="{{ path('app_categorie_index') }}"">Retour</a>
     </div>
     </div>
 
